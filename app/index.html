@@ -42,8 +42,14 @@
     }
 </style>
 <script>
+    
+    const protocol = window.location.protocol;
+    const ip = window.location.hostname;
+    const port = window.location.port;
+    const connectionString = `${protocol}//${ip}:${port}`;
+
     (async function init() {
-        const response = await fetch('http://3.143.230.135:3000/get-profile');
+        const response = await fetch(`${connectionString}/get-profile`);
         console.log("response", response);
         const user = await response.json();
         console.log(JSON.stringify(user));
@@ -66,7 +72,7 @@
             interests: document.getElementById('input-interests').value
         };
         
-        const response = await fetch('http://3.143.230.135:3000/update-profile', {
+        const response = await fetch(`${connectionString}/update-profile`, {
             method: "POST",
             headers: {
               'Accept': 'application/json',
