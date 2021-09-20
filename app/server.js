@@ -38,7 +38,6 @@ app.post('/update-profile', async function (req, res) {
     let userObj = req.body;
     const data = await User.updateOne({ userid: 1 }, { $set: { name: userObj.name, email: userObj.email, interests: userObj.interests } });
 
-    console.log(data);
     res.send(userObj);
 
   } catch (error) {
@@ -49,9 +48,7 @@ app.post('/update-profile', async function (req, res) {
 app.get('/get-profile',async function (req, res) {  
   try {
     const data = await User.findOne({ userid: 1 });
-    console.log(data)
     res.status(200).send(data ? data : { name: 'Default Name', email: 'Default Email', interests: 'Default Interests' });
-  
   } catch (error) {
     res.send( { name: 'Error Name', email: 'Default Email', interests: 'Default Interests' })
   }
