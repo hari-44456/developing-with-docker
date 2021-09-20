@@ -12,7 +12,7 @@ app.use(express.json());
 
 // change public url everytime you start instance
 // add 27017 port in inbound rules
-let mongoUrlDocker = "mongodb://admin:password@3.143.230.135:27017";
+let mongoUrlDocker = "mongodb://admin:password@mongodb";
 
 mongoose.connect(
 	mongoUrlDocker,
